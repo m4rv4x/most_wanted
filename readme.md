@@ -1,6 +1,13 @@
 # Find the ountry of Bad Guys in your logs
 
-`sudo ./apache2.sh`
+## As Root !
+
+`./apache2.sh`
+`./fail2ban.sh`
+`./lighttpd.sh`
+`./openvpnas.sh`
+
+## Example :
 
 ```
 2816 89.***.***.*** Netherlands                                                                                                                                           
