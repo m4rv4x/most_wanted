@@ -1,4 +1,3 @@
-
 #!/bin/bash
 # Retrieves bad hosts messing around...
 
