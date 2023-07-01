@@ -3,7 +3,7 @@
 # Retrieves bad hosts messing around...
 
 # Retrieve all IPs from ufw log and print only top 100 ips
-ips=$(grep -oE "\b([0-9]{1,3}\.){3}[0-9]{1,3}\b" /var/log/ufw.log | sort | uniq -c | sort -nr | head -n 100)
+ips=$(grep -oE "\b([0-9]{1,3}\.){3}[0-9]{1,3}\b" /var/log/ufw.log.1 | sort | uniq -c | sort -nr | head -n 100)
 
 # Count the number of unique IPs
 count=$(echo "$ips" | wc -l)
