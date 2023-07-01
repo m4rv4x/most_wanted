@@ -1,25 +1,36 @@
 #!/bin/bash
 # Retrieves bad hosts messing around...
 
-# Retrieve all IPs from fail2ban log
-ips=$(grep -oE "\b([0-9]{1,3}\.){3}[0-9]{1,3}\b" /var/log/fail2ban.log)
+# Retrieve all IPs from fail2ban log and print only top 100 ips
+ips=$(grep -oE "\b([0-9]{1,3}\.){3}[0-9]{1,3}\b" /var/log/fail2ban.log | sort | uniq -c | sort -nr | head -n 100)
 
 # Count the number of unique IPs
-count=$(echo "$ips" | sort | uniq -c | wc -l)
+count=$(echo "$ips" | wc -l)
 
-# Find the top 100 IPs
-top_ips=$(echo "$ips" | sort | uniq -c | sort -nr | head -n 100)
+# Find all IPs
+all_ips=$(echo "$ips")
 
-# Count the number of times each top IP appears
-top_ips_count=$(echo "$top_ips" | awk '{print $1}')
+# Count the number of times each IP appears
+all_ips_count=$(echo "$all_ips" | awk '{print $1}')
 
-# Retrieve country of each host of top 100 print it too
-echo "Country of each host of top 100:"
+# Retrieve country of each host of all IPs and print it too
+echo "Country of each host of all IPs:"
 while read -r line; do
     ip=$(echo "$line" | awk '{print $2}')
     country=$(geoiplookup "$ip" | awk -F ', ' '{print $2}')
     echo "$line $country"
-done <<< "$top_ips"
-
+done <<< "$all_ips"
 
 echo "Total unique IPs: $count"
+
+# Count the number of each country appeared as "Ban" in fail2ban.log
+echo "Number of each country appeared as \"Ban\" in fail2ban.log:"
+echo "$all_ips" | while read -r line; do
+    ip=$(echo "$line" | awk '{print $2}')
+    country=$(geoiplookup "$ip" | awk -F ', ' '{print $2}')
+    if [ -n "$country" ]; then
+        echo "$country"
+    else
+        echo "Ban"
+    fi
+done | sort | uniq -c
