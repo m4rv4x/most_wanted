@@ -1,11 +1,14 @@
-# Find the ountry of Bad Guys in your logs
+# Most_Wanted
+# Find the country of Bad Guys in your logs
+# Beta !
 
-## As Root !
+## Run it as Root !
 
 `./apache2.sh`
 `./fail2ban.sh`
 `./lighttpd.sh`
 `./openvpnas.sh`
+`./ufw.sh`
 
 ## Example :
 
