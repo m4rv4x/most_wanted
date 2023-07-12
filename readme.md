@@ -4,11 +4,11 @@
 
 ## Run it as Root !
 
-`./apache2.sh`
-`./fail2ban.sh`
-`./lighttpd.sh`
-`./openvpnas.sh`
-`./ufw.sh`
+- `./apache2.sh`
+- `./fail2ban.sh`
+- `./lighttpd.sh`
+- `./openvpnas.sh`
+- `./ufw.sh`
 
 ## Example :
 
