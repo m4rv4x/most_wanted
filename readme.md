@@ -1,5 +1,5 @@
 # Most_Wanted
-# Find the country of Bad Guys in your logs
+# Find ip and country of bad guys in your logs
 # Beta !
 
 ## Run it as Root !
