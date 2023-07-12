@@ -1,6 +1,5 @@
-# Most_Wanted
-# Find ip and country of bad guys in your logs
-# Beta !
+# Most_Wanted (beta)
+## Simple bash scripts to find ip and country of bad guys from logs
 
 ## Run it as Root !
 
